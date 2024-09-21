@@ -37,12 +37,33 @@ const cx = classNames.bind(styles);
 
 const CallButton = () => {
     let sdt = 'tel:' + SDT;
+
+    const isMobile = () => {
+        // Kiểm tra user agent để xem có phải là thiết bị di động không
+        return /Mobi|Android/i.test(navigator.userAgent);
+    };
+
+    const handleCall = () => {
+        if (isMobile()) {
+            window.location.href = sdt;
+        } else {
+            alert('Chức năng gọi điện chỉ hoạt động trên thiết bị di động.');
+        }
+    };
     return (
         <div className={cx('wrapper', 'wrapper-mobile')}>
-            <Link href={sdt}>
-                {/* <PermPhoneMsgIcon /> */}
-                <Player autoplay loop src={animationData} style={{ height: '150px', width: '150px' }} />
-            </Link>
+            {/* <Link href={sdt}> */}
+            {/* <PermPhoneMsgIcon /> */}
+            {/* <Player autoplay loop src={animationData} style={{ height: '150px', width: '150px' }} /> */}
+            {/* </Link> */}
+            <div onClick={handleCall}>
+                <Player
+                    autoplay
+                    loop
+                    src={animationData}
+                    style={{ height: '150px', width: '150px', cursor: 'pointer' }}
+                />
+            </div>
         </div>
     );
 };

@@ -41,10 +41,10 @@ const Navbar = ({ lib_object }) => {
 
     const changeLang = () => {
         let lang = localStorage.getItem('lang');
-        if (lang == 'en') {
-            localStorage.setItem('lang', 'vi');
-        } else {
+        if (lang == 'vi') {
             localStorage.setItem('lang', 'en');
+        } else {
+            localStorage.setItem('lang', 'vi');
         }
         // load lại trang
         window.location.reload();
@@ -82,7 +82,7 @@ const Navbar = ({ lib_object }) => {
                     <img src="/LOGO.png" className={cx('logo')} />
                     <div className={cx('text-logo')}>{title}</div>
                 </Link>
-        <div className={cx('noti-wrapper', 'hide-on-mobile-pc', 'hide-laptop-mini')}>
+                <div className={cx('noti-wrapper', 'hide-on-mobile-pc', 'hide-laptop-mini')}>
                     <MarqueeNotification message={noti_text} />
                 </div>
                 <div className={cx('hide-on-pc')}>
@@ -120,8 +120,6 @@ const Navbar = ({ lib_object }) => {
                     </div>
                 </div>
             </div>
-
-            
 
             <div className={cx('noti-wrapper', 'hide-on-pc')}>
                 <MarqueeNotification message={noti_text} />

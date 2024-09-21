@@ -20,7 +20,7 @@ let en_iconFrame = {
     },
 };
 
-export let en_SDT = '0373577867';
+export let en_SDT = '+84373577867';
 export let en_com_name = 'Taxi Gia Re Company Limited';
 
 export let en_links = {

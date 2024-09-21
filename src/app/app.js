@@ -51,7 +51,7 @@ import {
 //     description: 'Đặt taxi Buôn Ma Thuột nhanh nhất, rẻ nhất. Gọi 5 phút sau có mặt liền',
 // };
 const App = ({ children }) => {
-    const langCode = localStorage.getItem('lang');
+    const langCode = localStorage.getItem('lang') || 'vi';
 
     const lib_object =
         langCode == 'vi'

@@ -66,7 +66,7 @@ import {
 import InstagramIcon from '@mui/icons-material/Instagram';
 const cx = classNames.bind(styles);
 export default function Home() {
-    const langCode = localStorage.getItem('lang');
+    const langCode = localStorage.getItem('lang') || 'vi';
 
     const lib_object =
         langCode == 'vi'

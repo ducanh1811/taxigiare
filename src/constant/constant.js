@@ -20,7 +20,7 @@ let iconFrame = {
     },
 };
 
-export let SDT = '0373577867';
+export let SDT = '+84373577867';
 export let com_name = 'TNHH Taxi Gia Re';
 
 export let links = {
