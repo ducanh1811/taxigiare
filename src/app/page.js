@@ -134,6 +134,20 @@ export default function Home() {
     // console.log('lib_object', lib_object);
 
     const sdt = 'tel:' + lib_object.SDT;
+    // let sdt = 'tel:' + SDT;
+
+    const isMobile = () => {
+        // Kiểm tra user agent để xem có phải là thiết bị di động không
+        return /Mobi|Android/i.test(navigator.userAgent);
+    };
+
+    const handleCall = () => {
+        if (isMobile()) {
+            window.location.href = sdt;
+        } else {
+            alert('Chức năng gọi điện chỉ hoạt động trên thiết bị di động.');
+        }
+    };
     const [messageApi, contextHolder] = message.useMessage();
     const success = () => {
         messageApi.open({
@@ -329,9 +343,9 @@ export default function Home() {
                                 <input value={phone} onChange={(e) => handleChangePhone(e)} type="text" className={cx('input')} placeholder="Số điện thoại" />
                             </div>
                         </div>  */}
-                        <Link href={sdt} className={cx('btn_order')}>
+                        <div onClick={handleCall} className={cx('btn_order')}>
                             {lib_object.call_text}
-                        </Link>
+                        </div>
                     </div>
                 </div>
                 <div className={cx('order_on_mobile_tablet', 'hide_on_pc')}>
@@ -393,9 +407,9 @@ export default function Home() {
                             </div>
                         </div> */}
 
-                        <Link href={sdt} className={cx('btn_order')}>
+                        <div onClick={handleCall} className={cx('btn_order')}>
                             {lib_object.call_text}
-                        </Link>
+                        </div>
                     </div>
                 </div>
                 <div className={cx('features')}>
@@ -438,7 +452,7 @@ export default function Home() {
                             {lib_object.info_commit.content.map((item, index) => (
                                 <span key={index} className={cx('content_caption')}>
                                     <h3>{item.title}</h3>
-                                    <br className={cx('hide-mobile')}/>
+                                    <br className={cx('hide-mobile')} />
                                     {item.content.map((item, index) => (
                                         <span key={index}>
                                             <TaskAltOutlinedIcon className={cx('icon_content_caption')} />

@@ -22,6 +22,21 @@ const Navbar = ({ lib_object }) => {
 
     const { title, noti_text, detail_links, lang, SDT } = lib_object;
 
+    let sdt = 'tel:' + SDT;
+
+    const isMobile = () => {
+        // Kiểm tra user agent để xem có phải là thiết bị di động không
+        return /Mobi|Android/i.test(navigator.userAgent);
+    };
+
+    const handleCall = () => {
+        if (isMobile()) {
+            window.location.href = sdt;
+        } else {
+            alert('Chức năng gọi điện chỉ hoạt động trên thiết bị di động.');
+        }
+    };
+
     // lấy param url hiện tại
     const url = window.location.pathname;
 
@@ -87,22 +102,22 @@ const Navbar = ({ lib_object }) => {
                 </div>
                 <div className={cx('hide-on-pc')}>
                     <div className={cx('text-logo-normal')}>{title}</div>
-                    <Link href={'tel:' + SDT} className={cx('phone_icon')}>
+                    <div onClick={handleCall} className={cx('phone_icon')}>
                         <Player autoplay loop src={animationData} style={{ height: '50px', width: '50px' }} />
                         {SDT}
-                    </Link>
+                    </div>
                 </div>
                 <div className={cx('menu-wrapper')}>
                     <p className={cx('btn_menu', 'hide-on-pc', 'hide-laptop-mini')}>
                         <MenuOutlinedIcon onClick={handleOpenMenu} className={cx('btn_icon')} />
                     </p>
                     <div className={cx('links', 'hide-on-mobile-pc')}>
-                        <Link href={'tel:' + SDT} className={cx('phone_icon', 'hide-laptop-mini')}>
+                        <div onClick={handleCall} className={cx('phone_icon', 'hide-laptop-mini')}>
                             <Player autoplay loop src={animationData} style={{ height: '50px', width: '50px' }} />
                             {SDT}
                             {/* <div className={cx('phone_icon')}></div> */}
                             {/* <LocalPhoneIcon className={cx('phone_icon')} /> */}
-                        </Link>
+                        </div>
                         {detail_links.map((link, index) => (
                             <Link
                                 onClick={() => handeClickPage(index)}
@@ -136,10 +151,10 @@ const Navbar = ({ lib_object }) => {
                     </div> */}
                     <div className={cx('hide-on-pc')}>
                         <div className={cx('text-logo-normal')}>{title}</div>
-                        <Link href={'tel:' + SDT} className={cx('phone_icon')}>
+                        <div onClick={handleCall} className={cx('phone_icon')}>
                             <Player autoplay loop src={animationData} style={{ height: '50px', width: '50px' }} />
                             {SDT}
-                        </Link>
+                        </div>
                         {/* <div className={cx('change_lang')} onClick={changeLang}>
                             <div className={cx('lang')}>{lang.code}</div>
                             <img src={lang.image} className={cx('flag')} />

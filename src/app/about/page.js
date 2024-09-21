@@ -137,6 +137,20 @@ const About = () => {
     // } = lib_object;
     const sdt = 'tel:' + lib_object.SDT;
 
+    // let sdt = 'tel:' + SDT;
+
+    const isMobile = () => {
+        // Kiểm tra user agent để xem có phải là thiết bị di động không
+        return /Mobi|Android/i.test(navigator.userAgent);
+    };
+
+    const handleCall = () => {
+        if (isMobile()) {
+            window.location.href = sdt;
+        } else {
+            alert('Chức năng gọi điện chỉ hoạt động trên thiết bị di động.');
+        }
+    };
     //     service_info,
     //     title,
     //     slides,
@@ -210,9 +224,9 @@ const About = () => {
                             <p className={cx('message')}>{item.content}</p>
                             {/* <div className={cx('title_info_span')}></div> */}
                             <div className={cx('order')}>
-                                <Link href={sdt} className={cx('btn_order')}>
+                                <div onClick={handleCall} className={cx('btn_order')}>
                                     {lib_object.call_text}
-                                </Link>
+                                </div>
                             </div>
                         </>
                     ),
