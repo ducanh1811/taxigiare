@@ -40,7 +40,7 @@ const Navbar = ({ lib_object }) => {
     };
 
     const changeLang = () => {
-        let lang = localStorage.getItem('lang');
+        let lang = localStorage.getItem('lang') || 'vi';
         if (lang == 'vi') {
             localStorage.setItem('lang', 'en');
         } else {
