@@ -72,7 +72,7 @@ import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 const cx = classNames.bind(styles);
 
 const About = () => {
-    const langCode = localStorage.getItem('lang');
+    const langCode = localStorage.getItem('lang') || 'vi';
 
     const lib_object =
         langCode == 'vi'

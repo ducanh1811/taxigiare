@@ -150,8 +150,13 @@ const Navbar = ({ lib_object }) => {
 
                 <ul className={cx('links')}>
                     {detail_links.map((link, index) => (
-                        <li key={index} className={index == currentPage ? cx('link', 'active') : cx('link')}>
-                            <Link onClick={() => handeClickPage(index)} key={link.id} href={link.url}>
+                        <li key={index}>
+                            <Link
+                                className={index == currentPage ? cx('link', 'active') : cx('link')}
+                                onClick={() => handeClickPage(index)}
+                                key={link.id}
+                                href={link.url}
+                            >
                                 {link.title}
                             </Link>
                         </li>
